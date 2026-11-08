@@ -4,7 +4,28 @@
     <meta charset="UTF-8">
     <meta name="theme-color" content="#030712">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hanif | Portfolio CV</title>
+    <title>Hanif | Portfolio CV – Web & Mobile Developer</title>
+
+    <!-- SEO & LINK PREVIEW (ganti DOMAIN-KAMU dengan domain asli setelah deploy) -->
+    <meta name="description" content="Portfolio Hanif, mahasiswa D3 Manajemen Informatika Universitas Sriwijaya. Web developer & mobile developer (Laravel, Flutter, JavaScript).">
+    <meta name="keywords" content="Hanif, portfolio, web developer, mobile developer, Laravel, Flutter, Universitas Sriwijaya">
+    <meta name="author" content="Hanif">
+    <link rel="canonical" href="https://DOMAIN-KAMU/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hanif | Portfolio CV">
+    <meta property="og:description" content="Web & mobile developer. Lihat project, sertifikat, dan terminal interaktif saya.">
+    <meta property="og:url" content="https://DOMAIN-KAMU/">
+    <meta property="og:image" content="https://DOMAIN-KAMU/images/og-image.jpg">
+    <meta property="og:locale" content="id_ID">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hanif | Portfolio CV">
+    <meta name="twitter:description" content="Web & mobile developer. Lihat project, sertifikat, dan terminal interaktif saya.">
+    <meta name="twitter:image" content="https://DOMAIN-KAMU/images/og-image.jpg">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23030712'/%3E%3Ctext x='32' y='43' font-family='monospace' font-size='30' font-weight='700' text-anchor='middle' fill='%2300ff9c'%3E%26lt;H/%26gt;%3C/text%3E%3C/svg%3E">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Person","name":"Hanif","jobTitle":"Web & Mobile Developer","email":"mailto:zaykayla575@gmail.com","affiliation":{"@type":"CollegeOrUniversity","name":"Universitas Sriwijaya"},"sameAs":["https://github.com/alfariziehanif45-jpg","https://www.instagram.com/hanifalfarizie/"]}
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -12,24 +33,34 @@
 </head>
 <body class="locked">
 
-    <!-- INTRO / LOADING -->
+    <!-- INTRO / LOADING : code editor boot -->
     <div id="intro">
         <div class="intro-panel top"></div>
         <div class="intro-panel bottom"></div>
+        <div class="intro-beam"></div>
+        <span class="hud hud-tl">HANIF.DEV // portfolio.build</span>
+        <span class="hud hud-tr" id="introClock">--:--:--</span>
+        <span class="hud hud-bl">html · css · js · php · dart · python</span>
         <div class="intro-center">
             <div class="intro-logo" data-text="HANIF">HANIF</div>
+            <div class="ed">
+                <div class="ed-bar">
+                    <div class="ed-dots"><i></i><i></i><i></i></div>
+                    <div class="ed-tabs" id="edTabs"></div>
+                </div>
+                <div class="ed-code" id="edCode" aria-hidden="true"></div>
+            </div>
+            <div class="langs" id="introLangs"></div>
             <div class="intro-log" id="introLog"></div>
             <div class="intro-bar"><i id="introFill"></i></div>
-            <div class="intro-pct" id="introPct">0%</div>
+            <div class="intro-pct" id="introPct">build 0%</div>
             <button id="introSkip" type="button">skip &gt;&gt;</button>
         </div>
     </div>
 
-    <div id="progress"></div>
+    
+<div id="progress"></div>
     <div class="cursor-glow"></div>
-
-
-    <!-- CODE PARTICLE BACKGROUND -->
     <canvas id="code-bg"></canvas>
 
     <!-- NAVBAR -->
@@ -37,15 +68,20 @@
         <nav class="navbar">
             <div class="logo"><b>&lt;</b>HANIF<span>/&gt;</span></div>
             <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certificates">Certificates</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" data-i18n="nav_home">Home</a></li>
+                <li><a href="#about" data-i18n="nav_about">About</a></li>
+                <li><a href="#education" data-i18n="nav_edu">Education</a></li>
+                <li><a href="#experience" data-i18n="nav_exp">Experience</a></li>
+                <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
+                <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
+                <li><a href="#certificates" data-i18n="nav_certs">Certificates</a></li>
+                <li><a href="#terminal">Terminal</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
             </ul>
-            <button class="menu-toggle" aria-label="Buka menu navigasi" aria-expanded="false">☰</button>
+            <div class="nav-right">
+                <button class="lang-btn" id="langBtn" type="button" aria-label="Ganti bahasa / Switch language">EN</button>
+                <button class="menu-toggle" aria-label="Buka menu navigasi" aria-expanded="false">☰</button>
+            </div>
         </nav>
     </header>
 
@@ -55,17 +91,15 @@
             <p class="small-text"><span id="hello"></span></p>
             <h1>HANIF</h1>
             <h2><span id="typing"></span></h2>
-            <p class="hero-description">
-                Saya adalah mahasiswa yang tertarik pada teknologi, pengembangan website,
-                mobile development, dan dunia digital.
+            <p class="hero-description" data-i18n="hero_desc">
+                Saya adalah mahasiswa yang tertarik pada teknologi, pengembangan website, mobile development, dan dunia digital.
             </p>
             <div class="hero-buttons">
-                <a href="#projects" class="btn primary">Lihat Project</a>
-                <a href="cv/CV-Hanif.pdf" download class="btn secondary">Download CV</a>
+                <a href="#projects" class="btn primary" data-i18n="btn_projects">Lihat Project</a>
+                <a href="cv/CV-Hanif.pdf" download class="btn secondary" data-i18n="btn_cv">Download CV</a>
             </div>
         </div>
 
-        <!-- LANYARD ID CARD (drag / ikuti cursor) -->
         <div class="hero-image">
             <div class="lanyard" id="lanyard">
                 <canvas></canvas>
@@ -74,10 +108,9 @@
                         <img src="images/profile.jpg" alt="Foto Hanif" draggable="false" loading="eager" fetchpriority="high" decoding="async">
                     </div>
                     <h3>HANIF</h3>
-                        <div class="project-tech"><span>Laravel</span><span>JavaScript</span><span>OpenStreetMap</span></div>
                     <p>&lt;Developer /&gt;</p>
                     <small>ID: DEV-2026</small>
-                    <div class="barcode"></div>
+                    <div class="qr" id="idQr" title="Scan untuk membuka portfolio"></div>
                 </div>
             </div>
         </div>
@@ -85,48 +118,83 @@
 
     <!-- ABOUT -->
     <section id="about" class="section reveal">
-        <div class="section-title"><span>01</span><h2>About Me</h2></div>
+        <div class="section-title"><span>01</span><h2 data-i18n="t_about">About Me</h2></div>
         <div class="about-container">
             <div class="about-text">
-                <h3>Mengenal Saya Lebih Dekat</h3>
-                <p>Halo, saya Hanif. Saya merupakan mahasiswa yang memiliki ketertarikan terhadap teknologi dan pengembangan aplikasi.</p>
-                <p>Saya senang mempelajari bagaimana sebuah website dan aplikasi dapat dibuat menjadi lebih menarik, interaktif, dan mudah digunakan.</p>
+                <h3 data-i18n="about_h3">Mengenal Saya Lebih Dekat</h3>
+                <p data-i18n="about_p1">Halo, saya Hanif. Saya merupakan mahasiswa yang memiliki ketertarikan terhadap teknologi dan pengembangan aplikasi.</p>
+                <p data-i18n="about_p2">Saya senang mempelajari bagaimana sebuah website dan aplikasi dapat dibuat menjadi lebih menarik, interaktif, dan mudah digunakan.</p>
             </div>
             <div class="about-info">
-                <div class="info-box"><i>👤</i><div><span>Nama</span><strong>Hanif</strong></div></div>
-                <div class="info-box"><i>💼</i><div><span>Profesi</span><strong>Student / Developer</strong></div></div>
-                <div class="info-box"><i>📍</i><div><span>Lokasi</span><strong>Indonesia</strong></div></div>
+                <div class="info-box"><i>👤</i><div><span data-i18n="lbl_name">Nama</span><strong>Hanif</strong></div></div>
+                <div class="info-box"><i>💼</i><div><span data-i18n="lbl_job">Profesi</span><strong data-i18n="job_val">Student / Developer</strong></div></div>
+                <div class="info-box"><i>📍</i><div><span data-i18n="lbl_loc">Lokasi</span><strong>Palembang, Sumatera Selatan</strong></div></div>
                 <div class="info-box wide"><i>✉️</i><div><span>Email</span><strong>zaykayla575@gmail.com</strong></div></div>
             </div>
+        </div>
+
+        <!-- ANGKA BERJALAN -->
+        <div class="stats">
+            <div class="stat"><b data-auto="certs">0</b><span data-i18n="st_certs">Sertifikat</span></div>
+            <div class="stat"><b data-auto="projects">0</b><span data-i18n="st_projects">Project</span></div>
+            <div class="stat"><b data-count="1" data-suffix="+">0</b><span data-i18n="st_years">Tahun Belajar</span></div>
+            <div class="stat"><b data-auto="tech">0</b><span data-i18n="st_tech">Teknologi</span></div>
         </div>
     </section>
 
     <!-- EDUCATION -->
     <section id="education" class="section reveal">
-        <div class="section-title"><span>02</span><h2>Education</h2></div>
+        <div class="section-title"><span>02</span><h2 data-i18n="t_edu">Education</h2></div>
         <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <span>2023 - Sekarang</span>
-                    <h3>Perguruan Tinggi</h3>
-                    <p>Program Studi Sistem Informasi / Informatika.</p>
+            <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content">
+                <span data-i18n="edu_now">2025 - Sekarang</span>
+                <h3>Universitas Sriwijaya</h3>
+                <p data-i18n="edu_unsri">Mahasiswa D3 Manajemen Informatika. Mempelajari pengembangan web, mobile, dan sistem informasi.</p>
+            </div></div>
+            <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content">
+                <span>2022 - 2025</span>
+                <h3 data-i18n="edu_sma">Sekolah Menengah Atas (SMA / SMK)</h3>
+                <p data-i18n="edu_sma_p">Pendidikan sekolah menengah atas.</p>
+            </div></div>
+            <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content">
+                <span>2019 - 2022</span>
+                <h3 data-i18n="edu_smp">Sekolah Menengah Pertama (SMP)</h3>
+                <p data-i18n="edu_smp_p">Pendidikan sekolah menengah pertama.</p>
+            </div></div>
+            <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content">
+                <span>2013 - 2019</span>
+                <h3 data-i18n="edu_sd">Sekolah Dasar (SD)</h3>
+                <p data-i18n="edu_sd_p">Awal perjalanan belajar dan pendidikan dasar.</p>
+            </div></div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE & ORGANIZATION (EDIT: ganti dengan pengalaman aslimu) -->
+    <section id="experience" class="section reveal">
+        <div class="section-title"><span>03</span><h2 data-i18n="t_exp">Experience &amp; Organization</h2>
+            <p class="section-description" data-i18n="exp_desc">Magang, kepanitiaan, dan organisasi yang pernah saya ikuti.</p></div>
+        <div class="timeline">
+            <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content">
+                <div class="org-logos">
+                    <img src="images/logo-bem-fasilkom.png" alt="Logo BEM Fasilkom Unsri" loading="lazy" decoding="async">
+                    <img src="images/logo-relasi.png" alt="Logo Departemen Relasi" loading="lazy" decoding="async">
                 </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <span>2020 - 2023</span>
-                    <h3>Sekolah Menengah</h3>
-                    <p>Pendidikan sekolah menengah.</p>
-                </div>
-            </div>
+                <span data-i18n="exp1_date">2025 - Sekarang</span>
+                <h3 data-i18n="exp1_t">BEM Fasilkom Unsri — Departemen Relasi (Internal)</h3>
+                <p data-i18n="exp1_p">Anggota Departemen Relasi divisi Internal di Badan Eksekutif Mahasiswa Fakultas Ilmu Komputer, Universitas Sriwijaya. Terlibat dalam menjaga hubungan dan komunikasi antar pengurus serta mendukung kegiatan organisasi.</p>
+                <img class="org-photo" src="images/org-bem-relasi.jpg" alt="Foto bersama Departemen Relasi BEM Fasilkom Unsri" loading="lazy" decoding="async">
+            </div></div>
+            <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content">
+                <span>2026</span>
+                <h3 data-i18n="exp2_t">[Nama Kepanitiaan / Magang] — Staff</h3>
+                <p data-i18n="exp2_p">Ganti dengan pengalaman kepanitiaan atau magang. Tulis kontribusi nyata, misalnya membuat website acara.</p>
+            </div></div>
         </div>
     </section>
 
     <!-- SKILLS -->
     <section id="skills" class="section reveal">
-        <div class="section-title"><span>03</span><h2>My Skills</h2></div>
+        <div class="section-title"><span>04</span><h2 data-i18n="t_skills">My Skills</h2></div>
         <div class="tech-grid">
             <div class="tech" style="--clr:#e34f26"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/html5/html5-original.svg" alt="HTML" loading="lazy"><span>HTML</span></div>
             <div class="tech" style="--clr:#1572b6"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/css3/css3-original.svg" alt="CSS" loading="lazy"><span>CSS</span></div>
@@ -135,13 +203,35 @@
             <div class="tech" style="--clr:#54c5f8"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/flutter/flutter-original.svg" alt="Flutter" loading="lazy"><span>Flutter</span></div>
             <div class="tech" style="--clr:#ffca28"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/firebase/firebase-original.svg" alt="Firebase" loading="lazy"><span>Firebase</span></div>
         </div>
+
+        <!-- CURRENTLY LEARNING (EDIT persentase sesuai progresmu) -->
+        <h3 class="sub-title">⚡ <span data-i18n="learning">Sedang Dipelajari</span></h3>
+        <div class="learn-grid">
+            <div class="learn-card"><div class="skill"><div class="skill-header"><span>Machine Learning</span><span>40%</span></div><div class="skill-bar"><div class="skill-progress" data-width="40%"></div></div></div></div>
+            <div class="learn-card"><div class="skill"><div class="skill-header"><span>Python &amp; Pandas</span><span>60%</span></div><div class="skill-bar"><div class="skill-progress" data-width="60%"></div></div></div></div>
+            <div class="learn-card"><div class="skill"><div class="skill-header"><span>Flutter</span><span>55%</span></div><div class="skill-bar"><div class="skill-progress" data-width="55%"></div></div></div></div>
+            <div class="learn-card"><div class="skill"><div class="skill-header"><span>Laravel</span><span>45%</span></div><div class="skill-bar"><div class="skill-progress" data-width="45%"></div></div></div></div>
+        </div>
+
+        <!-- GITHUB LIVE STATS -->
+        <h3 class="sub-title">🐙 <span data-i18n="gh_title">Statistik GitHub</span></h3>
+        <div class="gh-box" id="ghBox">
+            <div class="gh-nums">
+                <div class="stat"><b id="ghRepos">–</b><span data-i18n="gh_repos">Repository</span></div>
+                <div class="stat"><b id="ghFollow">–</b><span>Followers</span></div>
+                <div class="stat"><b id="ghCommits">–</b><span data-i18n="gh_commits">Commit terbaru</span></div>
+            </div>
+            <div class="gh-langs" id="ghLangs"></div>
+            <img class="gh-graph" id="ghGraph" alt="GitHub contribution graph" loading="lazy">
+            <p class="gh-note" id="ghNote"></p>
+        </div>
     </section>
 
     <!-- PROJECTS -->
     <section id="projects" class="section reveal">
         <div class="section-title">
-            <span>04</span><h2>My Projects</h2>
-            <p class="section-description">Beberapa project yang pernah saya kerjakan dalam bidang web dan mobile.</p>
+            <span>05</span><h2 data-i18n="t_projects">My Projects</h2>
+            <p class="section-description" data-i18n="proj_desc">Beberapa project yang pernah saya kerjakan dalam bidang web dan mobile. Klik kartu untuk melihat detail.</p>
         </div>
 
         <div class="project-filter">
@@ -153,7 +243,7 @@
         <div class="project-category">
             <div class="category-title"><span>🌐</span><h3>Web Projects</h3></div>
             <div class="projects-container">
-                <div class="project-card" data-category="web">
+                <div class="project-card" data-category="web" data-project="asean">
                     <div class="project-image">
                         <img src="images/project-asean.jpg" alt="Wisata Negara ASEAN" loading="lazy" decoding="async">
                         <div class="project-type">WEB</div>
@@ -162,7 +252,9 @@
                     <div class="project-content">
                         <div class="project-icon">🌏</div>
                         <h3>Wisata Negara ASEAN</h3>
-                        <p>Website yang membantu pengguna mempelajari wisata, kuliner, dan kota di negara ASEAN.</p>
+                        <div class="project-tech"><span>Laravel</span><span>JavaScript</span><span>OpenStreetMap</span></div>
+                        <p data-i18n="p_asean">Website yang membantu pengguna mempelajari wisata, kuliner, dan kota di negara ASEAN.</p>
+                        <button class="detail-btn" type="button" data-i18n="btn_detail">Lihat Detail →</button>
                     </div>
                 </div>
             </div>
@@ -171,7 +263,7 @@
         <div class="project-category">
             <div class="category-title"><span>📱</span><h3>Mobile Projects</h3></div>
             <div class="projects-container">
-                <div class="project-card" data-category="mobile">
+                <div class="project-card" data-category="mobile" data-project="campus">
                     <div class="project-image">
                         <img src="images/project-campus-lost.jpg" alt="Campus Lost" loading="lazy" decoding="async">
                         <div class="project-type">MOBILE</div>
@@ -181,11 +273,12 @@
                         <div class="project-icon">📱</div>
                         <h3>Campus Lost</h3>
                         <div class="project-tech"><span>Flutter</span><span>Firebase</span><span>Dart</span></div>
-                        <p>Aplikasi mobile yang membantu mahasiswa menemukan dan melaporkan barang yang hilang.</p>
+                        <p data-i18n="p_campus">Aplikasi mobile yang membantu mahasiswa menemukan dan melaporkan barang yang hilang.</p>
+                        <button class="detail-btn" type="button" data-i18n="btn_detail">Lihat Detail →</button>
                     </div>
                 </div>
 
-                <div class="project-card" data-category="mobile">
+                <div class="project-card" data-category="mobile" data-project="rpg">
                     <div class="project-image">
                         <img src="images/project-rpg-gacha.png" alt="RPG Gacha" loading="lazy" decoding="async">
                         <div class="project-type">MOBILE</div>
@@ -195,7 +288,8 @@
                         <div class="project-icon">🎮</div>
                         <h3>RPG Gacha</h3>
                         <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Vercel</span></div>
-                        <p>Game bergenre RPG dengan sistem gacha karakter, penyusunan tim, pertarungan bergiliran berdasarkan SPD, Boss Rush, crafting material, toko, dan Skill Tree. Terdapat sistem elemen (Api → Udara → Tanah → Air, Cahaya ⇄ Kegelapan) yang memberi +50% damage pada elemen unggul dan -25% pada elemen lemah, pity counter gacha, serta peningkatan stat setiap level (HP/ATK/DEF/SPD/CRIT).</p>
+                        <p data-i18n="p_rpg">Game RPG dengan sistem gacha karakter, tim, pertarungan bergiliran berdasarkan SPD, Boss Rush, crafting, toko, dan Skill Tree.</p>
+                        <button class="detail-btn" type="button" data-i18n="btn_detail">Lihat Detail →</button>
                     </div>
                 </div>
             </div>
@@ -205,14 +299,14 @@
     <!-- CERTIFICATES -->
     <section id="certificates" class="section reveal">
         <div class="section-title">
-            <span>05</span><h2>Certificates</h2>
-            <p class="section-description">Sertifikat pembelajaran dan pengembangan kemampuan saya.</p>
+            <span>06</span><h2 data-i18n="t_certs">Certificates</h2>
+            <p class="section-description" data-i18n="cert_desc">Sertifikat pembelajaran dan pengembangan kemampuan saya.</p>
         </div>
         <div class="certificate-container">
             <div class="certificate-card">
                 <div class="certificate-image">
                     <img src="images/certificate-machine-learning.png" alt="Certificate Intro to Machine Learning" loading="lazy" decoding="async">
-                    <div class="certificate-overlay"><button class="view-certificate" data-image="images/certificate-machine-learning.png">🔍 Lihat Sertifikat</button></div>
+                    <div class="certificate-overlay"><button class="view-certificate" data-image="images/certificate-machine-learning.png" data-i18n="btn_cert">🔍 Lihat Sertifikat</button></div>
                 </div>
                 <div class="certificate-content">
                     <div class="certificate-icon">🤖</div>
@@ -224,7 +318,7 @@
             <div class="certificate-card">
                 <div class="certificate-image">
                     <img src="images/certificate-programming.png" alt="Certificate Intro to Programming" loading="lazy" decoding="async">
-                    <div class="certificate-overlay"><button class="view-certificate" data-image="images/certificate-programming.png">🔍 Lihat Sertifikat</button></div>
+                    <div class="certificate-overlay"><button class="view-certificate" data-image="images/certificate-programming.png" data-i18n="btn_cert">🔍 Lihat Sertifikat</button></div>
                 </div>
                 <div class="certificate-content">
                     <div class="certificate-icon">💻</div>
@@ -236,7 +330,7 @@
             <div class="certificate-card">
                 <div class="certificate-image">
                     <img src="images/certificate-python.png" alt="Certificate Python" loading="lazy" decoding="async">
-                    <div class="certificate-overlay"><button class="view-certificate" data-image="images/certificate-python.png">🔍 Lihat Sertifikat</button></div>
+                    <div class="certificate-overlay"><button class="view-certificate" data-image="images/certificate-python.png" data-i18n="btn_cert">🔍 Lihat Sertifikat</button></div>
                 </div>
                 <div class="certificate-content">
                     <div class="certificate-icon">🐍</div>
@@ -248,7 +342,7 @@
             <div class="certificate-card">
                 <div class="certificate-image">
                     <img src="images/certificate-pandas.png" alt="Certificate Pandas" loading="lazy" decoding="async">
-                    <div class="certificate-overlay"><button class="view-certificate" data-image="images/certificate-pandas.png">🔍 Lihat Sertifikat</button></div>
+                    <div class="certificate-overlay"><button class="view-certificate" data-image="images/certificate-pandas.png" data-i18n="btn_cert">🔍 Lihat Sertifikat</button></div>
                 </div>
                 <div class="certificate-content">
                     <div class="certificate-icon">🏆</div>
@@ -260,16 +354,30 @@
         </div>
     </section>
 
+    <!-- INTERACTIVE TERMINAL -->
+    <section id="terminal" class="section reveal">
+        <div class="section-title"><span>07</span><h2>Terminal</h2>
+            <p class="section-description" data-i18n="term_desc">Coba ketik perintah seperti about, skills, projects, atau contact.</p></div>
+        <div class="terminal" id="term">
+            <div class="term-head"><i></i><i></i><i></i><span>hanif@portfolio: ~</span></div>
+            <div class="term-body" id="termBody">
+                <div id="termOut"></div>
+                <div class="term-line"><label for="termIn">hanif@portfolio:~$</label><input id="termIn" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Terminal input"></div>
+            </div>
+            <div class="term-chips" id="termChips"></div>
+        </div>
+    </section>
+
     <!-- CONTACT -->
     <section id="contact" class="section reveal">
-        <div class="section-title"><span>06</span><h2>Contact Me</h2></div>
+        <div class="section-title"><span>08</span><h2 data-i18n="t_contact">Contact Me</h2></div>
         <div class="contact-container">
-            <p>Tertarik untuk bekerja sama atau ingin menghubungi saya?</p>
+            <p data-i18n="contact_p">Tertarik untuk bekerja sama atau ingin menghubungi saya?</p>
             <form class="contact-form" id="contactForm">
-                <input type="text" id="fname" placeholder="Nama kamu" required>
-                <input type="email" id="femail" placeholder="Email kamu" required>
-                <textarea id="fmsg" rows="5" placeholder="Tulis pesan..." required></textarea>
-                <button type="submit" class="btn primary">Kirim Pesan 🚀</button>
+                <input type="text" id="fname" placeholder="Nama kamu" data-i18n-ph="ph_name" required>
+                <input type="email" id="femail" placeholder="Email kamu" data-i18n-ph="ph_email" required>
+                <textarea id="fmsg" rows="5" placeholder="Tulis pesan..." data-i18n-ph="ph_msg" required></textarea>
+                <button type="submit" class="btn primary" data-i18n="btn_send">Kirim Pesan 🚀</button>
                 <div class="form-status" id="formStatus"></div>
             </form>
 
@@ -290,13 +398,44 @@
     <div class="certificate-modal" id="certificateModal">
         <div class="modal-content">
             <button class="modal-close" aria-label="Tutup sertifikat" id="modalClose">×</button>
-            <img id="modalImage" src="" alt="Certificate">
+            <div class="cert-scene" id="certScene">
+                <div class="cert-3d" id="cert3d">
+                    <img id="modalImage" class="cert-face front" src="" alt="Certificate" draggable="false">
+                    <div class="cert-face back" id="certBack"></div>
+                </div>
+            </div>
+            <div class="cert-ui">
+                <button id="certFlip" type="button" data-i18n="cert_flip">🔄 Balik Sertifikat</button>
+                <small data-i18n="cert_hint">Seret untuk memutar • klik 2x untuk membalik</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT DETAIL MODAL -->
+    <div class="certificate-modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+        <div class="pm-box">
+            <button class="modal-close" aria-label="Tutup detail project" id="pmClose">×</button>
+            <div class="pm-slider" id="pmSlider">
+                <div class="pm-track" id="pmTrack"></div>
+                <button class="pm-nav prev" id="pmPrev" type="button" aria-label="Sebelumnya">‹</button>
+                <button class="pm-nav next" id="pmNext" type="button" aria-label="Berikutnya">›</button>
+                <div class="pm-dots" id="pmDots"></div>
+            </div>
+            <div class="pm-body">
+                <h3 id="pmTitle"></h3>
+                <p id="pmDesc"></p>
+                <h4 data-i18n="pm_feat">Fitur Utama</h4><ul id="pmFeat"></ul>
+                <h4 data-i18n="pm_tech">Teknologi</h4><div class="project-tech" id="pmTech"></div>
+                <h4 data-i18n="pm_chal">Tantangan</h4><p id="pmChal"></p>
+                <div class="pm-links" id="pmLinks"></div>
+            </div>
         </div>
     </div>
 
     <button id="toTop" type="button" aria-label="Kembali ke atas">↑</button>
     <div class="cur-dot"></div><div class="cur-ring"></div>
 
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js" defer></script>
     <script src="js/script.js" defer></script>
 </body>
 </html>
